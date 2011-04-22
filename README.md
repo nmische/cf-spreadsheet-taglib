@@ -13,16 +13,13 @@ This is a very basic set of custom tags that allow you to create Excel files fro
       </ss:tr>
       <ss:tr>
         <ss:td width="30">This column has a lot of data which will wrap. Blah, blah, blah.</ss:td>
-        <ss:td>Blah</ss:td>
-        <ss:td>Blah</ss:td>		
+        <ss:td>Blah, Blah</ss:td>
+        <ss:td>Blah, Blah, Blah</ss:td>		
       </ss:tr>
       <ss:tr>
         <ss:td>Blah</ss:td>
-        <ss:td>Blah</ss:td>
-        <ss:td width="20">
-          Blah, Blah
-          Blah, Blah
-        </ss:td>		
+        <ss:td>Blah, Blah</ss:td>
+        <ss:td width="20">Blah, Blah, Blah</ss:td>		
       </ss:tr>	
     </ss:table>
     
