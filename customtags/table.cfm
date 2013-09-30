@@ -2,9 +2,17 @@
 	<cfparam name="attributes.sheetName" default="Sheet1" />
 	<cfparam name="attributes.variable" default="spreadsheet" />
 	<cfparam name="attributes.format" default="xls" />
+	<cfparam name="attributes.spreadsheetObj" default="" />
 	<cfparam name="thisTag.rows" default="#ArrayNew(1)#" />		
-	<cfscript>		
-		ssObj = SpreadsheetNew(attributes.sheetName, (attributes.format eq "xlsx") );
+	<cfscript>
+
+		if ( attributes.spreadsheetObj eq "" ) {
+			ssObj = SpreadsheetNew(attributes.sheetName, (attributes.format eq "xlsx") );
+		} else {
+			SpreadsheetCreateSheet(attributes.spreadsheetObj, attributes.sheetName);
+			SpreadsheetSetActiveSheet(attributes.spreadsheetObj, attributes.sheetName);
+			ssObj = attributes.spreadsheetObj;
+		}		
 		
 		// track column widths
 		colWidths = [];		
@@ -23,6 +31,11 @@
 				if(StructKeyExists(cell,"isHeader") and cell.isHeader) {
 					format.bold = true;
 				}
+
+				if(StructKeyExists(cell,"dataformat")) {
+					format.dataformat = cell.dataformat;
+				}
+
 				SpreadsheetFormatCell(ssObj,format,i,j);
 				
 				// get the width for the column							
